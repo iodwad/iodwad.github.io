@@ -20,20 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="这里将浅显的介绍标题里的东西，以及他的特例：斯特林反演。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="浅谈集合划分容斥">
-<meta property="og:url" content="http://example.com/2022/02/21/set-partition-iep/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="iodwad 的 Blog">
+<meta property="og:url" content="http://example.com/archives/2022/03/index.html">
 <meta property="og:site_name" content="iodwad 的 Blog">
-<meta property="og:description" content="这里将浅显的介绍标题里的东西，以及他的特例：斯特林反演。">
 <meta property="og:locale">
-<meta property="article:published_time" content="2022-02-21T15:53:57.000Z">
-<meta property="article:modified_time" content="2022-02-21T15:56:02.844Z">
 <meta property="article:author" content="iodwad">
-<meta property="article:tag" content="集合划分容斥，斯特林反演">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/02/21/set-partition-iep/">
+<link rel="canonical" href="http://example.com/archives/2022/03/">
 
 
 <script id="page-configurations">
@@ -41,12 +36,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-Hans'
   };
 </script>
 
-  <title>浅谈集合划分容斥 | iodwad 的 Blog</title>
+  <title>归档 | iodwad 的 Blog</title>
   
 
 
@@ -158,95 +153,50 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content archive">
             
 
-    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/21/set-partition-iep/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://s3.bmp.ovh/imgs/2022/02/870c84a1c7d254b9.jpg">
-      <meta itemprop="name" content="iodwad">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="iodwad 的 Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          浅谈集合划分容斥
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-02-21 23:53:57 / 修改时间：23:56:02" itemprop="dateCreated datePublished" datetime="2022-02-21T23:53:57+08:00">2022-02-21</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <span class="collection-header">嗯..! 目前共计 8 篇日志。 继续努力。</span>
+      </div>
 
       
-        <p>这里将浅显的介绍标题里的东西，以及他的特例：斯特林反演。</p>
-<span id="more"></span>
-
-<p>例题：计算将 $n!$ 分解为 $n!&#x3D;\prod\limits_{i&#x3D;1}^k a_i$，其中 $a_i$ 两两不同的方案数。$n\leq 10^4,k \leq 30$。</p>
-<p>我们考虑用容斥来处理 $a_i$ 两两不同的限制。考虑现在有一组分解方案 $\prod b_i$，我们将其中相同的数字划为一个等价类，则合法的方案都是等价类个数等于 $k$ 的方案。我们考虑枚举每个等价类的大小，注意这里大小相同的等价类是<strong>没有区别</strong>的。然后对于 $n!$ 的唯一分解 $\prod p_i^{q_i}$ 考虑 $p_i,q_i$，对于每个质因子将它的指数用完全背包划分到各个等价类中，然后我们就得到了在当前钦定等价类分布情况下的方案数。</p>
-<p>接下来要做的事情是调配容斥系数。首先显然这个容斥系数会跟等价类大小有关。我们希望，一个方案被计算的次数是 $\prod f_{size}$ 次，其中 $size$ 是当前方案里每个极大等价类的大小。显然要满足 $f_1&#x3D;1,f_{i&gt;1}&#x3D;0$。观察到，在上面我们钦定方案的过程里，一个真实情况的里的极大等价类的每种划分都会被枚举到，如果以类似的方式给钦定方案中每个等价类分配一个容斥权值 $g_{size}$ 的话，我们会有 $F(x)&#x3D;\exp G(x)$（分别是两个数列的 EGF），因为 $\exp$ 的组合意义就相当于是将一些元素集合按有标号的方式拼合，其实就等价于我们上面提到的划分。那么我们还需要令 $f_0&#x3D;1$，然后就可以得到 $G(x)&#x3D;\ln F(x)&#x3D;\ln (1+x)&#x3D;\sum\limits_{i&#x3D;0} (-1)^{i+1}\frac{x^i}{i}$，便有 $g_i&#x3D; (-1)^{i+1} (i-1)!$。</p>
-<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>将原本的元素两两不同的限制改为恰好 $t$ 个等价类，还能套用之前的方法吗？</p>
-<p>不能。因为我们之前的方法，是基于 “合法情况每个等价类大小为 $1$” 的前提，而当我们无法用等价类大小的限制来表示需要的限制时，之前的方法也就失效了。</p>
-<p>考虑升维，我们用一个占位符 $y$ 来表示等价类个数，那么期望一组真实的划分方案中每个等价类贡献 $y$ 的权值，则最后要求的答案即是所得幂级数的第 $t$ 次项系数。在插值后，可以直接套用上面的容斥系数计算方法。</p>
-<h2 id="UPD：斯特林反演"><a href="#UPD：斯特林反演" class="headerlink" title="UPD：斯特林反演"></a>UPD：斯特林反演</h2><p>其实斯特林反演本质上是斯特林数的推导产物。</p>
-<p>最基本的斯特林反演公式：<br>$$<br>f_n&#x3D;\sum\limits_{i&#x3D;0}^n\begin{Bmatrix}n \ i\end{Bmatrix} g_i \<br>g_n &#x3D; \sum\limits_{i&#x3D;0}^n (-1)^i \begin{bmatrix} n \ i \end{bmatrix} f_i\<br>$$<br> 基于平时的经验，我们赋予 $f_n,g_n$ 组合意义：$g_n$ 是恰好 $n$ 个等价类的方案数，$f_n$ 是钦定了 $n$ 个等价类的方案数。</p>
-<p>考虑这个公式的证明过程（应用反转公式）<br>$$<br>g_n&#x3D;\sum\limits_{i&#x3D;0}^n [i&#x3D;n] g_i \<br>&#x3D;\sum\limits_{i&#x3D;0}^n g_i \sum \limits_{j&#x3D;i}^n (-1)^{n-j} \begin{bmatrix}n \j\end{bmatrix} \begin{Bmatrix} j\i \end{Bmatrix} \<br>&#x3D; \sum\limits_{j&#x3D;0}^n (-1)^{n-j} \begin{bmatrix}n \j\end{bmatrix} \sum\limits_{i&#x3D;0}^j \begin{Bmatrix} j\i \end{Bmatrix}g_i<br>$$<br>假设这是个集合划分容斥，那么我们和式里枚举的 $i$ 是恰好有多少个等价类，并将这些等价类用钦定划分成了 $j$ 个等价类，对应上面的爆搜，然后因为方案数只跟等价类个数相关，而跟等价类具体长啥样无关，就可以直接用第二类斯特林数来划分，得到钦定的权值。至于在钦定的等价类方案中每个大小为 $s$ 的等价类会贡献 $(-1)^{s+1} (s-1)!$ 的容斥系数这回事，会发现这个 $(s-1)!$ 本质上是长为 $s$ 的圆排列个数，也就是说对于一种将 $n$ 个元素钦定划分成 $j$ 个等价类时贡献的容斥系数是每个等价类里元素个数的圆排列的方案数之乘积再乘上 $(-1)^{n-j}$，前面也说了方案数只跟 $j$ 有关，因此对容斥系数求和就会得到  $(-1)^{n-j} \begin{bmatrix}n \j\end{bmatrix}$。</p>
-<p>至此我们就从集合划分容斥的角度介绍了斯特林反演。可以发现他们之前的关系与 “二项式反演和集合容斥” 的关系十分类似，只是这里的形式复杂了许多。因此当计算“钦定划分等价类”情景的方案数需要知道具体划分情况的时候，我们就需要集合划分容斥。当这个方案数与具体划分情况无关，只跟划分出多少个等价类有关的时候就可以使用斯特林反演，本质上就是一个东西。</p>
-
+    <div class="collection-year">
+      <span class="collection-header">2022</span>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E9%9B%86%E5%90%88%E5%88%92%E5%88%86%E5%AE%B9%E6%96%A5%EF%BC%8C%E6%96%AF%E7%89%B9%E6%9E%97%E5%8F%8D%E6%BC%94/" rel="tag"># 集合划分容斥，斯特林反演</a>
-          </div>
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2022-03-06T08:34:25+08:00"
+              content="2022-03-06">
+          03-06
+        </time>
+      </div>
 
-        
+      <div class="post-title">
+          <a class="post-title-link" href="/2022/03/06/March/" itemprop="url">
+            <span itemprop="name">March</span>
+          </a>
+      </div>
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2022/02/21/February/" rel="prev" title="February">
-      <i class="fa fa-chevron-left"></i> February
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/02/22/November/" rel="next" title="November">
-      November <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
+    </header>
   </article>
+
+
+    </div>
+  </div>
   
   
+  
+
   
 
 
@@ -299,7 +249,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E5%B1%95"><span class="nav-number">1.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UPD%EF%BC%9A%E6%96%AF%E7%89%B9%E6%9E%97%E5%8F%8D%E6%BC%94"><span class="nav-number">2.</span> <span class="nav-text">UPD：斯特林反演</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
