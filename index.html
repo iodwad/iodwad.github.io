@@ -184,7 +184,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-03-06 08:34:25 / 修改时间：08:34:51" itemprop="dateCreated datePublished" datetime="2022-03-06T08:34:25+08:00">2022-03-06</time>
+              <time title="创建时间：2022-03-06 08:34:25 / 修改时间：11:11:35" itemprop="dateCreated datePublished" datetime="2022-03-06T08:34:25+08:00">2022-03-06</time>
             </span>
 
           
@@ -199,11 +199,14 @@
 
       
           <p>三月的做题记录</p>
-<h2 id="HNOI2022模拟测试三十六-打麻将"><a href="#HNOI2022模拟测试三十六-打麻将" class="headerlink" title="HNOI2022模拟测试三十六 打麻将"></a>HNOI2022模拟测试三十六 打麻将</h2><p>TAGS：贪心，线段树</p>
-<p>对于单次询问考虑一个贪心策略：优先考虑深度较大的点为 LCA 的路径，如果子树内能选出两条长度之和大于等于 $k$ 的链则直接选取，这个点及其子树以后将无法对答案再产生贡献。因为一个点至多处于一条被选取的路径中，因此是正确的。</p>
-<p>再注意到一个关键性质：所有询问的答案之和是 $\mathcal O(\sum\limits \dfrac{n}{ik})&#x3D;\mathcal O(\dfrac{n\ln n}{k})$ 级别的，这启发我们寻找复杂度与答案大小相关的算法。</p>
-<p>考虑维护一个当前子树内<strong>可能</strong>产生贡献点的集合，每次从其中选出一个最深的点，判断其子树内直径是否大于等于 $k$，如果是，则将整个子树打上 $+1$ 的占用系数，并且向上倍增跳到第一个子树内直径大于等于 $k$  的点，将其加入集合。采用线段树来维护直径。注意我们只能提取出占用系数为 $0$ 的点，而要维护这个必须满足一个条件：一次操作要么是新加入的要么等价于撤销之前一次被加入的操作。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/06/March/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
